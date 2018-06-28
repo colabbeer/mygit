@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testPlatform</title>
+</head>
+<body>
+<div>
+    该设备平台为：<span id="Platform"></span>
+</div>
+
+<script>
+    (function(){
+        var platform = navigator.platform;
+        // alert(platform);
+
+        // PC
+        if (platform.indexOf("Win") > -1) {
+            // windows系统
+            Platform.innerText = 'windows';
+        } else if ( platform.indexOf('Mac') > -1 ) {
+            // os系统
+            Platform.innerText = 'Mac';
+        } else if ( platform.indexOf('iPhone') > -1 ) {
+            // iphone
+            Platform.innerText = 'iPhone';
+        } else if ( platform.indexOf('iPad') > -1) {
+            // ipad
+            Platform.innerText = 'iPad';
+        } else if (platform.indexOf('Android') > -1 || platform.indexOf('Linux') > -1 ){
+            // 安卓平台
+            Platform.innerText = 'Android';
+            // 安卓平板
+            if (window.screen.width > 767) {
+                Platform.innerText = 'Android平板';
+            }
+        }
+    })()
+</script>
+</body>
+</html>

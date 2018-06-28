@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestUA</title>
+</head>
+<body>
+<div>
+    该设备为：<span id="UA"></span>
+</div>
+<div>
+    浏览器(或浏览器内核)为：<span id="browser"></span>
+</div>
+
+<script>
+    (function () {
+        var userAgent = navigator.userAgent;
+        alert(navigator.platform);
+        var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        var isMobile = false; // 判断移动端设备标识
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgent.indexOf(Agents[v]) > -1 || window.screen.width < 768) { //window.screen.width 设备宽度
+                isMobile = true;
+                break;
+            }
+        }
+        if (isMobile) {
+            UA.innerText = "移动端设备";
+            browser.innerText = '/';
+            if (userAgent.indexOf("iPad") > -1 || window.screen.width > 767) {
+                UA.innerText = "平板";
+                browser.innerText = '/';
+            }
+        } else {
+            UA.innerText = "PC设备";
+            if (userAgent.indexOf("OPR") > -1) {
+                //Opera浏览器，因为Opera浏览器的userAgent也有Chrome和Safari，所以要写在前面
+                browser.innerText = "Opera"
+            } else if (userAgent.indexOf("QQBrowser") > -1) {
+                // QQBrowser
+                browser.innerText = " QQ浏览器";
+            } else if (userAgent.indexOf("Maxthon") > -1) {
+                // Maxthon
+                browser.innerText = "遨游浏览器";
+            } else if (userAgent.indexOf("UBrowser") > -1) {
+                // UC浏览器
+                browser.innerText = "UC浏览器";
+            } else if (userAgent.indexOf("Version") > -1 && userAgent.indexOf("Safari") > -1) {
+                //没有更好的办法判断Safari浏览器，只能通过version（版本号）的英文来判断，因为别的浏览器版本号不是这样写的
+                browser.innerText = "Safari";
+            } else if (userAgent.indexOf("Chrome") > -1) {
+                //谷歌浏览器也有可能是使Chrome内核的其他浏览器
+                browser.innerText = "Chrome";
+            } else if (userAgent.indexOf("Firefox") > -1) {
+                //火狐浏览器
+                browser.innerText = "Firefox";
+            } else if (userAgent.indexOf('Trident') > -1) {
+                //IE 11.0
+                browser.innerText = "IE 11.0";
+            } else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE 10.0") > -1) {
+                //IE 10.0
+                browser.innerText = "IE 10.0";
+            } else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE 9.0") > -1) {
+                //IE 9.0
+                browser.innerText = "IE 9.0";
+            } else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE 8.0") > -1) {
+                //IE 8.0
+                browser.innerText = "IE 8.0";
+            } else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE 7.0") > -1) {
+                //IE 7.0
+                browser.innerText = "IE 7.0";
+            }
+        }
+    })()
+</script>
+</body>
+</html>

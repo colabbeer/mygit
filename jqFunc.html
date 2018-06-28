@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .test {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="test" id="test">1</div>
+
+<script>
+    (function ($) {
+        $.fn.extend({
+            changeBg: function (options) {
+                var defaults = {color: "#fff"};
+                var opts = $.extend(defaults, options);
+                return this.each(function () {
+                    var obj = $(this);
+                    obj.css("background",opts.color);
+                })
+            }
+        })
+    })(jQuery)
+
+    $("#test").changeBg({color: "#ccc"});
+</script>
+</body>
+
+</html>
